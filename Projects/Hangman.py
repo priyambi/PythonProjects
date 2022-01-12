@@ -1,4 +1,5 @@
 import random
+import re
 print("Welcome to the HangMan game")
 category=["Flowers","Movies","Subjects","ShoppingBrands"]
 Flowers=["rose","marigold","lotus","sunflower","lily","tulip","hibiscus"]
@@ -24,12 +25,17 @@ print("_ "*n)
 while n!=0 :
     char=input(("Guess a letter: "))
     if word.find(char) != -1:
-        n=n-1
-        i=word.index(char)
-        print(i)
-        i=i*2
-        ans = ans[:i] + char + ans[i+1:]
-        print(ans)
+        indices = [i.start() for i in re.finditer(char, word)]
+        # print(indices)
+        x=len(indices)-1
+        while x>=0:
+            i=indices[x]
+            x=x-1
+            i=i*2
+            n=n-1
+            ans = ans[:i] + char + ans[i+1:]
+            print(ans)
     else:
         print("Wrong choice, Guess another character ")
 
+print("Word Correctly Guessed")
