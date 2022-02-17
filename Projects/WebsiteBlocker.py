@@ -1,13 +1,13 @@
 import time
 from datetime import datetime as dt
 
-sites_to_block = [
-    #'www.youtube.com', 'youtube.com',
+sites_to_block = [                                  #sites to be blocked
+    'www.youtube.com', 'youtube.com',
 ]
 
-Window_host = r"C:\Windows\System32\drivers\etc\hosts"              #path to windows host file
+Window_host ="C:\Windows\System32\drivers\etc\hosts"              #path to windows host file
 default_hoster = Window_host
-redirect = "127.0.0.1"
+redirect = "127.0.0.1"                          
 
 def block_websites(start_hour , end_hour):
     while True:
